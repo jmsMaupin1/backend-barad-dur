@@ -1,4 +1,5 @@
 # Based on http://www.theoriginalseries.com/traveltimes.htm
+# And also http://users.abo.fi/jolin/tolkien/middle-earth_distances_table.pdf
 # From,To,Hours (min)
 Ithilian Crossroads,Crossings of Poros,48
 Ithilian Crossroads,North Border Ithilien,24
