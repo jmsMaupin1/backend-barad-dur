@@ -98,3 +98,11 @@ In computer science and software development, we usually characterize the effici
 There are much, much better algorithms, but they are a little more complicated. If you have finished implementing the simple depth-first search, and would like to try implementing one of the more efficient algorithms, let your instructor know and we can provide some guidance on implementing a better search algorithm.
 
 *Aside*: Furlongs are an ancient measure of distance, used originally by the Roman Empire and based on how long a person could walk in an hour. In most of the world they have long ago been replaced by SI measures. In the U.S. they are still a legal measure, although the length of a furlong varies slightly from state to state. This is a crazy way to measure anything, but not much crazier than feet, inches, ounces, and miles.
+
+## Workflow for this Assignment
+1. Fork this repository into your own personal github account.
+2. Then Clone your own repo to your local development machine.
+3. Create a separate branch named dev/your-github-username, and checkout the branch.
+4. Commit your changes, then git push the branch back to your own github account.
+5. From your own Github repo, create a pull request (PR) from your dev branch back to your own master.
+6. Copy/Paste the URL link to your PR as your assignment submission.
