@@ -1,7 +1,7 @@
 #
 # This small map file is for testing the minimum distance finding. 
-#  It gives multiple routes in a way that is likely to cause incorrect
-# agorithms to give incorrect distances. 
+# It gives multiple routes in a way that is likely to cause incorrect
+# algorithms to give incorrect distances. 
 # 
 a,d,1000
 b,d,200
