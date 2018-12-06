@@ -67,6 +67,12 @@ def dfs(place, dist_so_far, roads, distances):
           distances: dict mapping places to the shortest distance at which they
                have been reached so far (up to this time).
     """
+    #   Consider cases:
+    #      - We've never been at place before (so it's not in distances)
+    #      - We've been at place before, on a path as short as this one (in distances)
+    #      - We've been here before, but this way is shorter (dist_so_far)
+    #    Consider which are base cases, and which require recursion.
+    #    For the cases that require recursion, what is the progress step?
     raise NotImplementedError("Implement this function")
 
 
