@@ -14,13 +14,14 @@ the start city.
 __author__ = "???"
 
 import argparse
+import sys
 
 
-def read_distances(map_file):
+def read_distances(map_filename):
     """Read a distance table from a named file into a dict
        mapping sources to lists of (destination, distance) pairs.
     Args:
-       map_file: A readable text file in which each line either
+       map_filename: A readable text file in which each line either
            begins with #  (indicating a comment line) or is of the form
            from location, to location, distance or time, for example
               Minis Tirith,Cair Andros,5
@@ -33,7 +34,8 @@ def read_distances(map_file):
         we assume that roads are bi-directional.
     """
     connections = dict()
-    raise NotImplementedError("Implement this function")
+    with open(map_filename) as f:
+        pass  # Implement this function
     return connections
 
 
@@ -61,8 +63,8 @@ def dfs(place, dist_so_far, roads, distances):
         is the shortest distance at which it has yet been reached.
        Args:
           place: Currently searching from here
-          dist_so_far:  Distance at which from_place has been reached
-              this time (which may not be the shortest path to from_place)
+          dist_so_far:  Distance at which `place` has been reached
+              this time (which may not be the shortest path to `place`)
           roads:  dict mapping places to lists of hops of the form (place, hop-distance)
           distances: dict mapping places to the shortest distance at which they
                have been reached so far (up to this time).
@@ -76,7 +78,7 @@ def dfs(place, dist_so_far, roads, distances):
     raise NotImplementedError("Implement this function")
 
 
-def main():
+def main(myargs):
     """
     Main program gets city pair and map file name,
     reports distance or reports lack of connectivity.
@@ -87,19 +89,18 @@ def main():
                         help="Starting place (quoted if it contains blanks)")
     parser.add_argument('to_place',
                         help="Destination place (quoted if it contains blanks)")
-    parser.add_argument('map_file', type=argparse.FileType('r'),
+    parser.add_argument('map_file',
                         help="Name of file containing road connections and distances")
-    args = parser.parse_args()
+    args = parser.parse_args(myargs)
     start_place = args.from_place
     destination = args.to_place
     roads = read_distances(args.map_file)
 
     if start_place not in roads:
-        print("Start place {} is not on the map".format(start_place))
-        exit(1)
+        return "Start place {} is not on the map".format(start_place)
+
     if destination not in roads:
-        print("Destination {} is not on the map".format(destination))
-        exit(1)
+        return "Destination {} is not on the map".format(destination)
 
     distances = {}
 
@@ -111,11 +112,11 @@ def main():
     )
 
     if destination in distances:
-        print("Distance from {} to {} is {}".format(
-            start_place, destination, distances[destination]))
-    else:
-        print("You can't get from {} to {}".format(start_place, destination))
+        return "Distance from {} to {} is {}".format(
+            start_place, destination, distances[destination])
+
+    return "You can't get from {} to {}".format(start_place, destination)
 
 
 if __name__ == "__main__":
-    main()
+    print(main(sys.argv[1:]))
