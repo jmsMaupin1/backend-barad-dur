@@ -190,6 +190,12 @@ class TestRoutes(unittest.TestCase):
             "Distance from Hobbiton to Minis Tirith is 1560.0"
         )
 
+    def test_noreach_a_x(self):
+        self.assertEqual(
+            routes.main(['a', 'x', 'sample-map-noreach.txt']),
+            "You can't get from a to x"
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
