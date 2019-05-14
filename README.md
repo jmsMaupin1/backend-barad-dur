@@ -106,6 +106,16 @@ There are much, much better algorithms, but they are a little more complicated. 
 
 *Aside*: Furlongs are an ancient measure of distance, used originally by the Roman Empire and based on how long a person could walk in an hour. In most of the world they have long ago been replaced by SI measures. In the U.S. they are still a legal measure, although the length of a furlong varies slightly from state to state. This is a crazy way to measure anything, but not much crazier than feet, inches, ounces, and miles.
 
+## Testing your algorithm
+Thanks to Kenzie SE3 student James Horton, there is now a test suite to apply to your routing algorithm. The test fixture (unittest class) is located in the `tests` folder and is discoverable by `unittest`, `pytest`, or `nose`.  Your algorithm will be tested against all of the input data sets. To run all of the tests, use the following command for example:
+```console
+$ python -m unittest discover
+```
+To run just a single test from the TestRoutes suite, use a command like this:
+```console
+$ python -m unittest tests.test_routes.TestRoutes.test_dfs_sample_map
+```
+
 ## Workflow for this Assignment
 1. Fork this repository into your own personal github account.
 2. Then Clone your own repo to your local development machine.
