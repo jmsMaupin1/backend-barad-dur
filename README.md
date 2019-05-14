@@ -1,8 +1,15 @@
 # How Far to Barad Dur?
 <img src="img/barad-dur.png" height="100" />
- 
-Determine the shortest distance between two cities.  A recursive routing algorithm project based on a CS210 class at University of Oregon, by [Michal Young.](https://classes.cs.uoregon.edu/15W/cis210/assignments/Assnmt5-Routing.php)  This project involves recursion, and you mainly have to carefully design and implement just one recursive function.
 
+## Objectives
+- Learn about graph data structures
+- Explore [recursive functions](https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/)
+- Learn how to traverse a data tree [depth-first](https://en.wikipedia.org/wiki/Depth-first_search)
+
+## Overview
+In this excercise, our goal is to determine the shortest distance between two cities.  This is a recursive routing algorithm project based on a CS210 class at University of Oregon, by [Michal Young.](https://classes.cs.uoregon.edu/15W/cis210/assignments/Assnmt5-Routing.php)  This project involves recursion, and you mainly have to carefully design and implement just one recursive function.
+
+## Instructions
 You are in the Kingdom of Boringham.  The cities are named a,b,c,d,e,f, and g, with road distances in furlongs as follows:  
 ![city map](img/routes1.png)
 
@@ -102,7 +109,7 @@ There are much, much better algorithms, but they are a little more complicated. 
 ## Workflow for this Assignment
 1. Fork this repository into your own personal github account.
 2. Then Clone your own repo to your local development machine.
-3. Create a separate branch named dev/your-github-username, and checkout the branch.
+3. Create a separate branch named `dev`, and checkout the branch.
 4. Commit your changes, then git push the branch back to your own github account.
 5. From your own Github repo, create a pull request (PR) from your dev branch back to your own master.
 6. Copy/Paste the URL link to your PR as your assignment submission.
