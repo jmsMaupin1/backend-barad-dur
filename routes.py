@@ -87,8 +87,6 @@ def dfs(place, dist_so_far, roads, distances):
     #      - We've been here before, but this way is shorter (dist_so_far)
     #    Consider which are base cases, and which require recursion.
     #    For the cases that require recursion, what is the progress step?
-    
-    # The problem with this code is that it doesnt add the initial place to the dict as 0
     if place not in distances:
         distances[place] = 0
 
@@ -121,8 +119,6 @@ def main(myargs):
     start_place = args.from_place
     destination = args.to_place
     roads = read_distances(args.map_file)
-
-    # show_roads(roads)
 
     if start_place not in roads:
         return "Start place {} is not on the map".format(start_place)
