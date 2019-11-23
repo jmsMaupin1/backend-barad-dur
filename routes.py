@@ -35,7 +35,20 @@ def read_distances(map_filename):
     """
     connections = dict()
     with open(map_filename) as f:
-        pass  # Implement this function
+        for line in f:
+            if line[0] != "#":
+                line = line.strip().split(",")
+                start, end, distance = line[0], line[1], line[2]
+                if start in connections:
+                    connections[start].append((end, distance))
+                else:
+                    connections[start] = [(end, distance)]
+
+                if end in connections:
+                    connections[end].append((start, distance))
+                else:
+                    connections[end] = [(start, distance)]
+
     return connections
 
 
@@ -75,7 +88,28 @@ def dfs(place, dist_so_far, roads, distances):
     #      - We've been here before, but this way is shorter (dist_so_far)
     #    Consider which are base cases, and which require recursion.
     #    For the cases that require recursion, what is the progress step?
-    raise NotImplementedError("Implement this function")
+    # for neighbor_tuple in roads[place]:
+    #     city, distance = neighbor_tuple[0], neighbor_tuple[1]
+    #     new_distance = float(distance) + dist_so_far
+    #     if city not in distances:
+    #         distances[city] = new_distance
+    #     elif new_distance < distances[city]:
+    #         distances[city] = new_distance
+    #     roads_shallow_copy = dict(roads)
+    #     roads_shallow_copy.pop(place)
+    #     if roads_shallow_copy and city in roads_shallow_copy:
+    #         dfs(city, new_distance, roads_shallow_copy, distances)
+    
+    for city, dist in roads[place]:
+        travelled_dist = float(dist) + dist_so_far
+        if city not in distances or travelled_dist < distances[city]:
+            distances[city] = travelled_dist
+
+        roads_copy = dict(roads)
+        roads_copy.pop(place)
+
+        if roads_copy and city in roads_copy:
+            dfs(city, travelled_dist, roads_copy, distances)
 
 
 def main(myargs):
@@ -95,6 +129,8 @@ def main(myargs):
     start_place = args.from_place
     destination = args.to_place
     roads = read_distances(args.map_file)
+
+    # show_roads(roads)
 
     if start_place not in roads:
         return "Start place {} is not on the map".format(start_place)
