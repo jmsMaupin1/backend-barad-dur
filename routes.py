@@ -36,9 +36,9 @@ def read_distances(map_filename):
     connections = dict()
     with open(map_filename) as f:
         for line in f:
-            if line[0] != "#":
+            if line[0] != "#" and line != "\n":
                 line = line.strip().split(",")
-                start, end, distance = line[0], line[1], line[2]
+                start, end, distance = line[0], line[1], float(line[2])
                 if start in connections:
                     connections[start].append((end, distance))
                 else:
@@ -48,7 +48,6 @@ def read_distances(map_filename):
                     connections[end].append((start, distance))
                 else:
                     connections[end] = [(start, distance)]
-
     return connections
 
 
@@ -88,18 +87,11 @@ def dfs(place, dist_so_far, roads, distances):
     #      - We've been here before, but this way is shorter (dist_so_far)
     #    Consider which are base cases, and which require recursion.
     #    For the cases that require recursion, what is the progress step?
-    # for neighbor_tuple in roads[place]:
-    #     city, distance = neighbor_tuple[0], neighbor_tuple[1]
-    #     new_distance = float(distance) + dist_so_far
-    #     if city not in distances:
-    #         distances[city] = new_distance
-    #     elif new_distance < distances[city]:
-    #         distances[city] = new_distance
-    #     roads_shallow_copy = dict(roads)
-    #     roads_shallow_copy.pop(place)
-    #     if roads_shallow_copy and city in roads_shallow_copy:
-    #         dfs(city, new_distance, roads_shallow_copy, distances)
     
+    # The problem with this code is that it doesnt add the initial place to the dict as 0
+    if place not in distances:
+        distances[place] = 0
+
     for city, dist in roads[place]:
         travelled_dist = float(dist) + dist_so_far
         if city not in distances or travelled_dist < distances[city]:
@@ -152,7 +144,6 @@ def main(myargs):
             start_place, destination, distances[destination])
 
     return "You can't get from {} to {}".format(start_place, destination)
-
 
 if __name__ == "__main__":
     print(main(sys.argv[1:]))
